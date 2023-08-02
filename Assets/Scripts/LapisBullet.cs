@@ -22,6 +22,10 @@ public class LapisBullet : MonoBehaviour
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         LookAt2D(dir);
 
+
+        // Destroys the object after 'lifespan' seconds
+        Destroy(gameObject, lifespan);
+
     }
 
     // Update is called once per frame

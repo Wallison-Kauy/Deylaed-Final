@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42bea59559edb4948a17fc20d8f63d2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ad9f27a4b2370d40829e5903a7934c6, type: 3}
   m_Name: Basic Weapon 1
   m_EditorClassIdentifier: 
   currentWeaponSpr: {fileID: 21300000, guid: 93bbada15f980184d9d6ae4f1174d333, type: 3}

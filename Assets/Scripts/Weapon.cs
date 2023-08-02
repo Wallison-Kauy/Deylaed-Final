@@ -10,17 +10,13 @@ public class Weapon : ScriptableObject
     public GameObject bulletPrefab;
     public float fireRate = 1;
     public int damage = 20;
-    private float lastShotTime = 5f;
+    private float lastShotTime = 0.5f;
     public void Shoot()
-    {
-        if (Time.time >= lastShotTime + fireRate)
-        {
-            // Dispara uma bala
+    {       // Dispara uma bala
             Instantiate(bulletPrefab, GameObject.Find("FirePoint").transform.position, Quaternion.identity);
 
             // Atualiza o último horário de disparo para o horário atual
             lastShotTime = Time.time;
-        }
 
     }
 

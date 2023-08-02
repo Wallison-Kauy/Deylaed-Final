@@ -22,10 +22,13 @@ public class Player : MonoBehaviour
     private bool isDashing;
     private bool canDash;
 
+
+
     private void Start()
     {
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         canDash = true;
+        
     }
 
     private void Update()
@@ -40,10 +43,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Instantiate(bullet, transform.position, Quaternion.identity);
-        }
+        
 
         playerDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 

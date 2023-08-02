@@ -47,10 +47,8 @@ public class Enemy : MonoBehaviour
         UnityEngine.Debug.Log("Entrou para dar dano");
 
         // Ignora colisões com o objeto que lançou a bala
-        if (collision.gameObject == this.gameObject)
-        {
-            return;
-        }
+      
+
 
         if (collision.gameObject.GetComponent<Health>() != null)
         {

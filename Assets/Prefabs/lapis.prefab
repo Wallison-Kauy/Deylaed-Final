@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1163714329766859864}
   m_Layer: 0
   m_Name: lapis
-  m_TagString: FirePoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7213372774003619314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 081a5e571387cc1409f6f80514d23471, type: 3}
+  m_Script: {fileID: 11500000, guid: 9236c7679a6fdcb46981753aa6e7efae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
