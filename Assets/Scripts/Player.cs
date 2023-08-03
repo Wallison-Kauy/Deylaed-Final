@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Player : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 5f;
@@ -33,31 +32,34 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-
-        if (Input.GetMouseButton(0))
+        if (!PauseMenu.isPaused)
         {
-            if (Time.time >= nextTimeOfFire)
+            if (Input.GetMouseButton(0))
             {
-                currentWeapon.Shoot();
-                nextTimeOfFire = Time.time + 0.3f / currentWeapon.fireRate;
+                if (Time.time >= nextTimeOfFire)
+                {
+                    currentWeapon.Shoot();
+                    nextTimeOfFire = Time.time + 0.3f / currentWeapon.fireRate;
+                }
             }
-        }
 
+
+
+            playerDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+            if (Input.GetKeyDown(KeyCode.Space) && !isDashing && canDash)
+            {
+                isDashing = true;
+                canDash = false;
+                StartCoroutine(DashCoroutine());
+            }
+
+            animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
+            animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
+
+            animator.SetFloat("Speed", playerDirection.sqrMagnitude);
+        }
         
-
-        playerDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
-        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && canDash)
-        {
-            isDashing = true;
-            canDash = false;
-            StartCoroutine(DashCoroutine());
-        }
-
-        animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
-        animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
-
-        animator.SetFloat("Speed", playerDirection.sqrMagnitude);
             
     }
 
