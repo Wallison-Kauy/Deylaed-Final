@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
             if (Time.time >= nextTimeOfFire)
             {
                 currentWeapon.Shoot();
-                nextTimeOfFire = Time.time + 1 / currentWeapon.fireRate;
+                nextTimeOfFire = Time.time + 0.3f / currentWeapon.fireRate;
             }
         }
 
