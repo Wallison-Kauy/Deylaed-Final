@@ -1,13 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private int health = 100;
 
     private int MAX_HEALTH = 100;
+
+    public static event Action OnPlayerDeath;
 
     // Update is called once per frame
     void Update()
@@ -65,7 +69,14 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        UnityEngine.Debug.Log("I am Dead!");
-        Destroy(gameObject);
+        if (this.CompareTag("Player"))
+        {
+            OnPlayerDeath?.Invoke();
+        }else
+        {
+            UnityEngine.Debug.Log("I am Dead!");
+            Destroy(gameObject);
+        }
+        
     }
 }
