@@ -8,9 +8,12 @@ public class Weapon : ScriptableObject
 {
     public Sprite currentWeaponSpr;
     public GameObject bulletPrefab;
+    [SerializeField]
     public float fireRate = 1;
+    [SerializeField]
     public int damage = 20;
-    private float lastShotTime = 0.5f;
+    [SerializeField]
+    private float lastShotTime = 2f;
     public void Shoot()
     {       // Dispara uma bala
             Instantiate(bulletPrefab, GameObject.Find("FirePoint").transform.position, Quaternion.identity);

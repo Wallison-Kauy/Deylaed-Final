@@ -32,10 +32,21 @@ public class LapisBullet : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, dir, speed * Time.deltaTime);
+        
     }
 
     private void LookAt2D(Vector2 direction)
     {
+        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
+        RotateTowardsMouse();
+    }
+
+    private void RotateTowardsMouse()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 mousePosInWorld = Camera.main.ScreenToWorldPoint(mousePos);
+        Vector2 direction = (mousePosInWorld - transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle - 180, Vector3.forward);
     }
