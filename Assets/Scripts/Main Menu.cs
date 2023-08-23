@@ -11,7 +11,13 @@ public class NewBehaviourScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void QuitGame()
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Main_Menu");
+    }
+
+        public void QuitGame()
     {
         //Saindo do jogo
         Application.Quit();
