@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject ghrostPrefab;
+    private GameObject enemyPrefab;
 
     [SerializeField]
     private float ghrostInterval = 3.5f;
@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(SpawnEnemy(ghrostInterval, ghrostPrefab));
+        StartCoroutine(SpawnEnemy(ghrostInterval, enemyPrefab));
     }
 
     private IEnumerator SpawnEnemy(float interval, GameObject enemy)
