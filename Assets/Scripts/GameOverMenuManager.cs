@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class GameOverMenuManager : MonoBehaviour
 {
@@ -18,7 +20,14 @@ public class GameOverMenuManager : MonoBehaviour
 
     public void EnableGameOverMenu()
     {
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         gameOverMenu.SetActive(true);
+        Invoke("callMainMenu", 15f);
+    }
+
+    void callMainMenu()
+    {
+        SceneManager.LoadScene("Main_Menu");
+        
     }
 }
