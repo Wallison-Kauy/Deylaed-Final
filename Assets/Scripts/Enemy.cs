@@ -8,6 +8,11 @@ public class Enemy : MonoBehaviour
     private int damage = 5;
     [SerializeField]
     private float speed = 1.5f;
+    private float damageCooldown = 0.5f; // Tempo em segundos entre cada aplicação de dano.
+    private float nextDamageTime = 0;    // Quando o próximo dano pode ser aplicado.
+
+    [SerializeField]
+    private bool isLethal = false;
 
     [SerializeField]
     private EnemyData data;
@@ -17,22 +22,44 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        if (!isLethal)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
         SetEnemyValues();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Swarm();
+        if (!isLethal)
+        {
+            Swarm();
+        }
     }
 
     private void SetEnemyValues()
     {
-        GetComponent<Health>().SetHealth(data.hp, data.hp);
+        Health healthComponent = GetComponent<Health>();
+
+        if (healthComponent == null)
+        {
+            // Se o componente Health não existir, adicioná-lo ao GameObject.
+            healthComponent = gameObject.AddComponent<Health>();
+
+            // Defina a vida padrão como 10.
+            healthComponent.SetHealth(10, 10);
+        }
+        else
+        {
+            healthComponent.SetHealth(data.hp, data.hp);
+        }
+
         damage = data.damage;
         speed = data.speed;
     }
+
+    
 
     private void Swarm()
     {
@@ -42,18 +69,39 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+   
+
+    void OnCollisionStay2D(Collision2D collision)
     {
-        UnityEngine.Debug.Log("Entrou para dar dano");
+        // Se não for hora de aplicar dano ainda, saia do método.
+        if (Time.time < nextDamageTime)
+        {
+            return;
+        }
 
-        // Ignora colisões com o objeto que lançou a bala
-      
+        // Verifica se o objeto colidido tem a tag "Enemy" ou é o próprio objeto.
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject == this.gameObject)
+        {
+            return; // Se for verdade, sai sem aplicar dano.
+        }
 
+        if (isLethal && collision.gameObject.CompareTag("Player"))
+        {
+            UnityEngine.Debug.Log("Inimigo letal atingiu o jogador!");
+            Health playerHealth = collision.gameObject.GetComponent<Health>();
+            if (playerHealth != null)
+            {
+                playerHealth.Damage(playerHealth.MaxHealth); // Use o getter MaxHealth como mencionado anteriormente.
+            }
+            return;
+        }
 
+        // Continua com a aplicação do dano.
         if (collision.gameObject.GetComponent<Health>() != null)
         {
+            UnityEngine.Debug.Log("Aplicando dano");
             collision.gameObject.GetComponent<Health>().Damage(damage);
-            Destroy(gameObject);
+            nextDamageTime = Time.time + damageCooldown; // Define a próxima vez que o dano pode ser aplicado.
         }
     }
 
