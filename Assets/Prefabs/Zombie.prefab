@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8913425151367481457}
   - component: {fileID: 1059642370027740167}
   - component: {fileID: 5053185000543555260}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 6
+  ResetColorAfterDamage: 0.2
 --- !u!114 &5053185000543555260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,4 +188,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   speed: 1.5
+  isLethal: 0
   data: {fileID: 11400000, guid: f56317d534ee963458460dbd08d2743d, type: 2}

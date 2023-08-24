@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2832125829465593775}
   m_Layer: 6
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   speed: 5
+  waypointsParent: {fileID: 0}
 --- !u!50 &5234621252770161240
 Rigidbody2D:
   serializedVersion: 4

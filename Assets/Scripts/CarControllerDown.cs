@@ -58,9 +58,9 @@ public class CarControllerDown : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Victory")
+        if (collision.gameObject.name == "finalDown")
         {
-            //Destroy(this.gameObject); // Destrua o carro
+            Destroy(this.gameObject); // Destrua o carro
         }
     }
 }

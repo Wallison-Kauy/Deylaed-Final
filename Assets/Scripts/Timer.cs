@@ -38,7 +38,7 @@ public class Timer : MonoBehaviour
         }
 
         currentTime -= Time.deltaTime;
-        UnityEngine.Debug.Log(currentTime);
+        //UnityEngine.Debug.Log(currentTime);
 
         if (currentTime <= 0 && runningTimer)
         {
