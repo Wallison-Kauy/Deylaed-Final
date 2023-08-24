@@ -21,9 +21,12 @@ public class LapisBullet : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         LookAt2D(dir);
+        GameObject[] cars = GameObject.FindGameObjectsWithTag("Car");
+        foreach (GameObject car in cars)
+        {
+            Physics2D.IgnoreCollision(car.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
 
-
-        // Destroys the object after 'lifespan' seconds
         Destroy(gameObject, lifespan);
 
     }
@@ -66,14 +69,17 @@ public class LapisBullet : MonoBehaviour
             return; // Retorna sem aplicar o dano ao objeto do jogador
         }
 
+        if (collision.gameObject.CompareTag("Car"))
+        {
+             Destroy(gameObject);
+        }
+
         if (collision.gameObject.GetComponent<Health>() != null)
         {
             collision.gameObject.GetComponent<Health>().Damage(damage);
             Destroy(gameObject);
         }
     }
-
-
 
 }
 
