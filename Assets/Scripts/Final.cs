@@ -9,15 +9,15 @@ public class Final : MonoBehaviour
     void Start()
     {
 
-        Invoke("endGame", 6f);
+        Invoke("callCredits", 6f);
 
     }
 
     //
 
-    void endGame()
+    void callCredits()
     {
-        SceneManager.LoadScene("Main_Menu");
+        SceneManager.LoadScene("Creditos");
     }
 
 
