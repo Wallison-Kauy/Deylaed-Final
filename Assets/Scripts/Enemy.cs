@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
         }
 
         // Verifica se o objeto colidido tem a tag "Enemy" ou é o próprio objeto.
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject == this.gameObject)
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject == this.gameObject || collision.gameObject.CompareTag("Car"))
         {
             return; // Se for verdade, sai sem aplicar dano.
         }

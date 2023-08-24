@@ -58,7 +58,7 @@ public class CarController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Victory")
+        if (collision.gameObject.name == "Linha de Chegada")
         {
             Destroy(this.gameObject); // Destrua o carro
         }

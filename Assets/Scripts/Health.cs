@@ -48,6 +48,10 @@ public class Health : MonoBehaviour
 
     public void Damage(int amount)
     {
+        if (gameObject.CompareTag("Car"))
+        {
+            return; // Se o objeto tem a tag "Car", não aplique dano.
+        }
         if (amount < 0)
         {
             throw new System.ArgumentOutOfRangeException("Cannot have negative Damage");

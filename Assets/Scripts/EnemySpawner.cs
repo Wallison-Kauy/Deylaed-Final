@@ -1,16 +1,21 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject enemyPrefab;
+    [System.Serializable]
+    public struct EnemyInfo
+    {
+        public GameObject enemyPrefab;
+        public float spawnInterval;
+    }
 
     [SerializeField]
-    private float ghrostInterval = 3.5f;
+    private List<EnemyInfo> enemies = new List<EnemyInfo>();
 
     [SerializeField]
-    private float spawnRadius = 30f; // O raio de spawn
+    private float spawnRadius = 30f;  // O raio de spawn
 
     private GameObject player;
 
@@ -25,7 +30,11 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(SpawnEnemy(ghrostInterval, enemyPrefab));
+
+        foreach (var enemyInfo in enemies)
+        {
+            StartCoroutine(SpawnEnemy(enemyInfo.spawnInterval, enemyInfo.enemyPrefab));
+        }
     }
 
     private IEnumerator SpawnEnemy(float interval, GameObject enemy)
