@@ -1,7 +1,7 @@
 using System.Linq; // necessário para o uso de Linq
 using UnityEngine;
 
-public class CarController : MonoBehaviour
+public class CarControllerDown : MonoBehaviour
 {
     public Transform[] waypoints; // Array de waypoints.
     public float speed = 5.0f;   // Velocidade do carro.
@@ -13,7 +13,7 @@ public class CarController : MonoBehaviour
 
     private void Awake()
     {
-        GameObject waypointsParent = GameObject.Find("WayPoints");
+        GameObject waypointsParent = GameObject.Find("WayPointsDown");
 
         if (waypointsParent != null)
         {
@@ -60,7 +60,7 @@ public class CarController : MonoBehaviour
     {
         if (collision.gameObject.name == "Victory")
         {
-            Destroy(this.gameObject); // Destrua o carro
+            //Destroy(this.gameObject); // Destrua o carro
         }
     }
 }
