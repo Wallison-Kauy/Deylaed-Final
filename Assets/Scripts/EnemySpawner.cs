@@ -31,6 +31,16 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnEnemy(float interval, GameObject enemy)
     {
         yield return new WaitForSeconds(interval);
+
+        if (player == null) // Verifique se o jogador ainda existe
+        {
+            player = GameObject.FindGameObjectWithTag("Player"); // Tente encontrar o jogador novamente
+            if (player == null) // Se ainda não for encontrado, pare a coroutine
+            {
+                yield break;
+            }
+        }
+
         Vector3 spawnPosition = RandomPositionWithinRadius(spawnRadius);
         if (Vector3.Distance(spawnPosition, player.transform.position) <= spawnRadius)
         {

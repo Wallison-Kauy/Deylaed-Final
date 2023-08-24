@@ -9,7 +9,7 @@ public class LapisBullet : MonoBehaviour
     [SerializeField]
     private int damage = 5;
     [SerializeField]
-    public float lifespan = 3f;
+    public float lifespan = 2f;
     private Vector2 dir;
 
 

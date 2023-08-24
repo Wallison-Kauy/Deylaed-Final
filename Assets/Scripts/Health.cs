@@ -98,6 +98,7 @@ public class Health : MonoBehaviour
     {
         if (this.CompareTag("Player"))
         {
+            Destroy(gameObject);
             OnPlayerDeath?.Invoke();
         }else
         {
